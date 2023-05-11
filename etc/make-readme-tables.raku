@@ -1,6 +1,6 @@
 use v6;
 
-sub MAIN(*@sources) {
+sub MAIN( Str:D :$root!, *@sources) {
     say '';
     say "ISO_32000 Reference|Entries";
     say "----|-----";
@@ -13,9 +13,9 @@ sub MAIN(*@sources) {
         die "no such file: '$_'" unless $io.e;
         with $io.slurp.lines.first(/^'Table '/) -> $iso-ref {
             s/'#|' .* 'Table'/Table/ with $iso-ref;
-            my $role-name = .subst(/^'lib/'/,'').subst(/'.rakumod'$/, '').subst(m{'/'}, '::', :g);
-            my $link = "gen/" ~ $_;
-            my $role-ref = "[$iso-ref]($link)";
+            my $path = .subst($root ~ '/', '');
+            my $role-name = $path.subst(/^'lib/'/,'').subst(/'.rakumod'$/, '').subst(m{'/'}, '::', :g);
+            my $role-ref = "[$iso-ref]($path)";
             my $role = try (require ::($role-name));
             die "failed to compile ::($role-name): $_" with $!;
             my @entries = $role.^methods.map: {'/' ~ .name};

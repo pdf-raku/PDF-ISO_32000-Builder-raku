@@ -3,7 +3,7 @@ use JSON::Fast;
 use PDF::ISO_32000;
 
 # Build.pm can also be run standalone 
-sub MAIN(IO() $meta6-in, :$root!, *@sources) {
+sub MAIN(IO() $meta6-in, Str:D :$root!, *@sources) {
     my Hash $meta6 = from-json($meta6-in.slurp);
     my %provides;
     my @resources;
