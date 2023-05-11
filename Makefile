@@ -20,6 +20,8 @@ RESOURCE_NAMES = $(subst $(RESOURCE_DIR),ISO_32000,$(RESOURCES))
 MODULES = $(subst $(RESOURCE_DIR),$(MODULE_DIR),$(patsubst %.json,%.rakumod,$(SOURCES)))
 
 all :
+	@echo "*** Initialising ***"
+	@zef --deps-only install .
 	@echo "*** Stage-I: Extracting tagged content from ISO-32000 (PDF Specification) ***"
 	@$(MAKE) pdf-to-xml
 	@echo "*** Stage-II: Extracting specification tables as JSON resources ***"

@@ -22,4 +22,7 @@ $ # etc...
 
 ## Description
 
-This module purely exists to rebuild the raku PDF::ISO_3200 module.
+This repo is part of the Raku PDF Toolchain. It exists to rebuild the raku
+PDF::ISO_32000 module.
+
+It is automatically checked -out and run from the PDF::ISO_32000 Makefile.
