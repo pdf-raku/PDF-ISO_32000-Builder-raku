@@ -43,7 +43,7 @@ $(EXPORT_ROOT) :
 pdf-to-xml : $(XML)
 
 $(XML) : $(PDF)
-	pdf-tag-dump --omit=Span --html $(PDF) > $(XML);
+	pdf-tag-dump.raku --omit=Span --atts --valid --max-depth=18 $(PDF) > $(XML);
 
 xml-to-json : pdf-to-xml
 	raku etc/make-json.raku --make --out-dir=$(RESOURCE_DIR) $(XML)
