@@ -38,6 +38,26 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
       <xsl:apply-templates/>
     </h3>
   </xsl:template>
+  <xsl:template match="P[@role='Heading 3']">
+    <h4>
+      <xsl:apply-templates/>
+    </h4>
+  </xsl:template>
+  <xsl:template match="P[@role='Heading 4']">
+    <h5>
+      <xsl:apply-templates/>
+    </h5>
+  </xsl:template>
+  <xsl:template match="P[@role='Heading 5']">
+    <h6>
+      <xsl:apply-templates/>
+    </h6>
+  </xsl:template>
+  <xsl:template match="P[@role='Heading 6']">
+    <h6>
+      <xsl:apply-templates/>
+    </h6>
+  </xsl:template>
   <!-- end  ISO-32000 Specific -->
   <xsl:template match="L/LI/Lbl">
     <!-- Discard superflous Lbl tags in list items -->
