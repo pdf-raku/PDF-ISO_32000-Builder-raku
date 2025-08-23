@@ -14,51 +14,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
       <xsl:apply-templates select="@*|node()"/>
     </a>
   </xsl:template>
-  <!-- start ISO-32000 Specific -->
-  <xsl:template match="P[@role='ExampleN+']">
-    <pre>
-      <xsl:apply-templates/>
-    </pre>
-  </xsl:template>
-  <xsl:template match="P[@role='zzCoverT']">
-    <title>
-      <xsl:apply-templates/>
-    </title>
-    <h1>
-      <xsl:apply-templates/>
-    </h1>
-  </xsl:template>
-  <xsl:template match="P[@role='Heading 1']">
-    <h2>
-      <xsl:apply-templates/>
-    </h2>
-  </xsl:template>
-  <xsl:template match="P[@role='Heading 2']">
-    <h3>
-      <xsl:apply-templates/>
-    </h3>
-  </xsl:template>
-  <xsl:template match="P[@role='Heading 3']">
-    <h4>
-      <xsl:apply-templates/>
-    </h4>
-  </xsl:template>
-  <xsl:template match="P[@role='Heading 4']">
-    <h5>
-      <xsl:apply-templates/>
-    </h5>
-  </xsl:template>
-  <xsl:template match="P[@role='Heading 5']">
-    <h6>
-      <xsl:apply-templates/>
-    </h6>
-  </xsl:template>
-  <xsl:template match="P[@role='Heading 6']">
-    <h6>
-      <xsl:apply-templates/>
-    </h6>
-  </xsl:template>
-  <!-- end  ISO-32000 Specific -->
   <xsl:template match="L/LI/Lbl">
     <!-- Discard superflous Lbl tags in list items -->
   </xsl:template>
@@ -70,7 +25,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="FENote|Note">
     <!-- /FENote /Note -> /fn -->
     <fn>
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="@*|node()"/>
     </fn>
   </xsl:template>
   <xsl:template match="Span[@TextDecorationType='Underline']">
@@ -104,7 +59,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="@*|node()">
     <!-- Identity transform -->
     <xsl:copy>
-      <xsl:apply-templates  select="@*|node()"/>
+      <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
 </xsl:stylesheet>

@@ -1,0 +1,12 @@
+table {
+    width: 60%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid blue;
+    padding: 3px;
+}
+
+P[role="TermNum"] { font-weight: bolder }
+P[role="Term(s)"] { font-style: italic }
+P[TextAlign="Justify"] { justify-content: space-evenly }
