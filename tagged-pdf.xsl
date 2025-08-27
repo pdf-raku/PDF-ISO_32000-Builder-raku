@@ -1,9 +1,6 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <!-- A rough and ready XSL transform from Tagged PDF XML serialization to HTML -->
-  <xsl:template match="processing-instruction()">
-  <blah/>
-  </xsl:template>
   <xsl:template match="/Document|/DocumentFragment">
     <html>
       <body>
@@ -16,6 +13,21 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <a>
       <xsl:apply-templates select="@*|node()"/>
     </a>
+  </xsl:template>
+  <xsl:template match="@SpaceBefore">
+    <xsl:attribute name="style">
+      <xsl:value-of select="concat('margin-top:', ., 'pt;')" />
+    </xsl:attribute>
+  </xsl:template>
+  <xsl:template match="@SpaceAfter">
+    <xsl:attribute name="style">
+      <xsl:value-of select="concat('margin-bottom:', ., 'pt;')" />
+    </xsl:attribute>
+  </xsl:template>
+  <xsl:template match="@ColumnSpan">
+    <xsl:attribute name="colspan">
+      <xsl:value-of select="." />
+    </xsl:attribute>
   </xsl:template>
   <xsl:template match="L/LI/Lbl">
     <!-- Discard superflous Lbl tags in list items -->

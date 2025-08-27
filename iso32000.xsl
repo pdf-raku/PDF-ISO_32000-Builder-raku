@@ -11,7 +11,7 @@
       </body>
     </html>
   </xsl:template>
-  <xsl:template match="P[@role='Example' or @role='ExampleN+']">
+  <xsl:template match="P[@role='Example'  or @role='ExampleN1' or @role='ExampleN+']">
     <pre>
       <xsl:apply-templates/>
     </pre>
