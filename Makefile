@@ -3,6 +3,7 @@ PDF=src/PDF32000_2008.pdf
 PDF_URL=https://opensource.adobe.com/dc-acrobat-sdk-docs/standards/pdfstandards/pdf/PDF32000_2008.pdf
 # -- Stage I --
 XML=PDF-ISO_32000.xml
+HTML=PDF-ISO_32000.html
 
 # export paths
 ROLE_BASE=ISO_32000
@@ -30,6 +31,7 @@ all :
 	@$(MAKE) json-to-raku
 	@echo "*** Stage-IV: Publishing (resource index, README.md, META6.json) ****"
 	@$(MAKE) meta6 readme
+	@$(MAKE) xml-to-html
 
 ## Setup
 setup : $(EXPORT_ROOT) $(PDF)
@@ -42,8 +44,13 @@ $(EXPORT_ROOT) :
 
 pdf-to-xml : $(XML)
 
+xml-to-html : $(HTML)
+
 $(XML) : $(PDF)
-	pdf-tag-dump --omit=Span --valid --xsl=iso32000.xsl --max-depth=18 $(PDF) > $(XML);
+	pdf-tag-dump --omit=Span --valid $(PDF) > $(XML);
+
+$(HTML) : $(XML)
+	xslt --xsl=iso32000.xsl $(XML) > $(HTML)
 
 xml-to-json : pdf-to-xml
 	raku etc/make-json.raku --make --out-dir=$(RESOURCE_DIR) $(XML)

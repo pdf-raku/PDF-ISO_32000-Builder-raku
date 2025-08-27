@@ -6,6 +6,7 @@
   "depends": [
     "JSON::Fast",
     "LibXML",
+    "LibXSLT",
     "Method::Also",
     "PDF::Font::Loader",
     "PDF::Tags",

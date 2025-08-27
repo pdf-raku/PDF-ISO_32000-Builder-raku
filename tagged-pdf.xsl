@@ -1,6 +1,9 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <!-- A rough and ready XSL transform from Tagged PDF XML serialization to HTML -->
+  <xsl:template match="processing-instruction()">
+  <blah/>
+  </xsl:template>
   <xsl:template match="/Document|/DocumentFragment">
     <html>
       <body>
