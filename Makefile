@@ -48,7 +48,7 @@ pdf-to-xml : $(XML)
 xml-to-html : $(HTML)
 
 $(XML) : $(PDF)
-	pdf-tag-dump --omit=Span --valid $(PDF) > $(XML);
+	pdf-tag-dump --omit=Span --valid --css=tagged-pdf.css $(PDF) > $(XML);
 
 $(HTML) : $(XML)
 	xslt --xsl=iso32000.xsl $(XML) > $(HTML)
