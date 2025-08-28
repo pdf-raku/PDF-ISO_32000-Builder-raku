@@ -31,6 +31,7 @@ all :
 	@$(MAKE) json-to-raku
 	@echo "*** Stage-IV: Publishing (resource index, README.md, META6.json) ****"
 	@$(MAKE) meta6 readme
+	@echo "*** generate HTML ***"
 	@$(MAKE) xml-to-html
 
 ## Setup
